@@ -1,0 +1,18 @@
+--create a dataframe with 1 to 100 and save in parquet file .
+
+
+val data = sc.parallelize( 1 to 100) 
+
+-- create dataFrame
+val dataDF = data.toDF()
+
+--write to parquet file
+dataDF.write.parquet("file.parquet")
+
+--read parquet file
+
+ val read = sqlContext.read.parquet("file.parquet")
+  
+ read.show()
+
+
